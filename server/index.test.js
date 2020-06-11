@@ -5,7 +5,7 @@ const db = require('./db')
 const seedUsers = require('../script/users.json')
 
 
-describe('GET /users', () => {
+xdescribe('GET /users', () => {
 
   before(async () => {
     await db.sync({ force: true })
