@@ -25,6 +25,7 @@ before_script:
   # api_key:
   #   secure: YOUR-***ENCRYPTED***-API-KEY-HERE
 before_deploy: # omit node_modules, since we set skip_cleanup below
+  - npm run build-client # make the bundle
   - rm -rf node_modules
 deploy: # see README for details on these keys
   # prevents travis from deleting the build
@@ -34,4 +35,4 @@ deploy: # see README for details on these keys
   app: first-nodejs-95-app
   # the secure key indicates an encrypted value; see README
   api_key:
-    - secure: "MJsffFn3iwOfQn6rTePAMMtzlCS+7wgxES/ypdQay1j3W0CXr/0jUe41flwDptNRflX204phqx91xayFNBn3mc8bBcZdYKX2hw/iVTopGMbgVDxEKEJy93mL04cEXGrz6tFAsrMQCv3LiAjUySl6z6F7bGeMDjNvryCmv3eUlUI3FzUNMyxwO8bJ5zwfVNx7ZrjGezHsJZBTfaSua9S44NLX6+T4FzEYI6MfBgMm6kmXKzZgVd5W2TZ6gHHMxvRcoehX2QlfKeXT2NGvOXSldL2WR4atO0mwYFEcSdNxSOqqfPM1mvulA41O6dZ+4pEnI2KIHdBf0pMmM1Flp8Uao2mUK6DYMWjYtCAwPS7AYsbLm7WPfkG0bbKaZg6C00r5iiM/anK6FYzpxJYnCBfCIftISgbuPOsMcSH3OKo5+K3gQ996PhcvsPBmYYDDbEMlCB22ttvGpxeN88xHW14/aaR3nOF1h26rQiljuAoO6mCDRd5HnL9SslOEsiMxQT2dMoepmPFJ2VVMayf+9ICktOuqEf5di2c/Eu3ZlOhcCYnF7GS4vF7IUrw58r3J0mdfN/4tssPmx24XDyP3GEaEBA5ujK8hluShzrwHe0je94MKMKAyQutNHC24FtJXisYJjGAAzZRrhMe/kkM5dFZAcR+7zwoCmmZRsg19kY88fv4="
+    - secure: Z7VlJvP3qjNbXXeCD+UL/aXBx7cfWMkPeaKIq7eAHV5MUJOdeCWLU7PTutJszV6VQh0kJYdNC2iW43Lxq/yoY++HPQbVqiCmE7K8trxFIBa5rYwM+F2DTgBB07dERsQuXM0+h7RyRQQ4c4ujlq2YdeqhOozoKVTQwQQuK0rpMJ+GNPIHzJYdAxXsm84OV7nGB6ZGNNT61C4mJfp1nqnyXrQdM18KFps9g1N580Y7Oi2otJ7m1nhYQT2mg6qVzoAtpkbUBD2twRPQ2krDbgNwnUz5APTGgJpYSvOmkboTuBCLYo/W3x+5qUi1It0YY3kLc8r70u+tRYW/mKL6nCxRCIZIymLjRgTeOSKQ5I/rNpjRIt2yNtgvzgvZa4ZCdvUeXT29+mwKrUq7cjk7patfpXLW36YS4deQrHV07+SSRBrwU+vFR9Qlp/7CFsEXt876fnLMeJkBL9GHmDG18Ho34C/3VIsGWR5qRqdhMxCAzxORBIxKE8Qx0GoabRpraYY4O3vm6PBzaXjxgPJymncdd2UBugdFhICH3Mii+19MDM2bru5UEv4j1NiSUFBI0eYnLC/V0OhCVU7L9WoMMtOhZeCHuC/MgaYdlXi9V37Q2VO5iTiYEi3rGJT54auE8//kcNsd9XcaNqzJ+T0btNe6hv2W4ojsJmfQQInz3sIjJWs=
