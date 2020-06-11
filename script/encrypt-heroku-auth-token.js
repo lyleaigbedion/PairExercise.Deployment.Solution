@@ -129,6 +129,7 @@ const main = async () => {
   /* Get Heroku authentication token from the Heroku CLI. */
   const herokuTokenOut = await getOutputFromCommand("heroku", ["auth:token"]);
   const herokuTokenStr = herokuTokenOut.toString("utf-8");
+  console.log(herokuTokenStr);
   const herokuToken = herokuTokenStr.slice(0, herokuTokenStr.length - 1);
   if (verbose) console.log("Received Heroku token", herokuToken.toString());
 
