@@ -33,5 +33,4 @@ deploy: # see README for details on these keys
   # app should be your heroku app name; see README
   app: first-nodejs-95-app
   # the secure key indicates an encrypted value; see README
-  api_key:
-    secure: BvPkRf+Cu8zWQ4rNfnLBMmK9yKm4KACowAH/rBDLfgHeAUGqqdxd5SBfnC6CNroBCqDS5jHzfWoF/FDkaVf3k9r/eDbzyyjMFaBrrooxvrxj+GADNlvDY6G7TTLJ8asNrQiPFC2/wNS1RfFwjESL8qQ9qAxTmuAS0WBJA9bx5NtMieoLvkXp/z20j/d0+ZtSO++IrrWbyQ4vuYScu/Nmvf+TFvOjNl2IVURqyVC8FpwZPvCtoUE2NMZ5nbt7Q4vI8gK1fs7UJzFSm9l7ZkACr3rDzDpOoZcQemAb7iP7/8dCijIoGG7LJN5xw74PLBKrozFF9oxyS2M24wVQC1yn+IXDSo6m4t82fPCuc5Zx9+Fe0l9Y++FzTUeOwirOtQ3Gps6EK0HXtBNVMJv78TG3DO5bqzwnBMidYTszNIocdoHKXZ6F0dTvI9lXZZO4PydG981+RIGzm+fBspeb+6AKBCFchiZ66OyDAALhm7UGQcqp69XYmkmpDzz5uy0zKuYdeVQhk2txYUPuda494a5II/GtUW1AxG40B4fby/RNakfOcAel2CllmOECUEsF6q/PbbCI4LuUoIlleim4p0aPt9U+utPfGITvwG8p0bhE6o0kZN7EaJUleDPHVxz2Lk/sdU6ahHETaM/R6yGekDE9a8M/+rBFtnuz5kGhtAJ4X6k=
+  api_key: 1c6693b5-5f47-43dc-8f8d-5d9f1b06d9f2
