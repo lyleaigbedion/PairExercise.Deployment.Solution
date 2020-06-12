@@ -1,38 +1,26 @@
 language: node_js
 node_js:
-  - node # uses most recent stable node version
+- node
 services:
-  - postgresql # starts up postgres
+- postgresql
 addons:
-  postgresql: '9.6' # highest available postgres version on Travis
-dist: trusty # uses trusty environment
-sudo: false # when on trusty, uses Docker containers for speed
+  postgresql: '9.6'
+dist: trusty
+sudo: false
 notifications:
   email:
-    on_success: change # default: change (only when going from broken to fixed)
-    on_failure: always # default: always (which is annoying, as it should be)
+    on_success: change
+    on_failure: always
 install:
-  - npm ci # faster, goes only from package-lock
+- npm ci
 before_script:
-  - psql -c 'create database "deployment-exercise-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
-  # before_deploy:
-  #   - npm run build-client # make the bundle
-  #   - rm -rf node_modules # omit from the tarball, since we skip cleanup
-  # deploy:
-  #   skip_cleanup: true # prevents travis from deleting the build
-  #   provider: heroku
-  #   app: first-nodejs-95-app # see README
-  # api_key:
-  #   secure: YOUR-***ENCRYPTED***-API-KEY-HERE
-before_deploy: # omit node_modules, since we set skip_cleanup below
-  - npm run build-client # make the bundle
-  - rm -rf node_modules
-deploy: # see README for details on these keys
-  # prevents travis from deleting the build
+- psql -c 'create database "deployment-exercise-test";' -U postgres
+before_deploy:
+- npm run build-client
+- rm -rf node_modules
+deploy:
   skip_cleanup: true
   provider: heroku
-  # app should be your heroku app name; see README
   app: first-nodejs-95-app
-  # the secure key indicates an encrypted value; see README
   api_key:
-    - secure: Z7VlJvP3qjNbXXeCD+UL/aXBx7cfWMkPeaKIq7eAHV5MUJOdeCWLU7PTutJszV6VQh0kJYdNC2iW43Lxq/yoY++HPQbVqiCmE7K8trxFIBa5rYwM+F2DTgBB07dERsQuXM0+h7RyRQQ4c4ujlq2YdeqhOozoKVTQwQQuK0rpMJ+GNPIHzJYdAxXsm84OV7nGB6ZGNNT61C4mJfp1nqnyXrQdM18KFps9g1N580Y7Oi2otJ7m1nhYQT2mg6qVzoAtpkbUBD2twRPQ2krDbgNwnUz5APTGgJpYSvOmkboTuBCLYo/W3x+5qUi1It0YY3kLc8r70u+tRYW/mKL6nCxRCIZIymLjRgTeOSKQ5I/rNpjRIt2yNtgvzgvZa4ZCdvUeXT29+mwKrUq7cjk7patfpXLW36YS4deQrHV07+SSRBrwU+vFR9Qlp/7CFsEXt876fnLMeJkBL9GHmDG18Ho34C/3VIsGWR5qRqdhMxCAzxORBIxKE8Qx0GoabRpraYY4O3vm6PBzaXjxgPJymncdd2UBugdFhICH3Mii+19MDM2bru5UEv4j1NiSUFBI0eYnLC/V0OhCVU7L9WoMMtOhZeCHuC/MgaYdlXi9V37Q2VO5iTiYEi3rGJT54auE8//kcNsd9XcaNqzJ+T0btNe6hv2W4ojsJmfQQInz3sIjJWs=
+    secure: Ilkv3XRNQlum9u192lFGgTqOQEIx/ZVDkx8BZQmUJRLqvWzkVpY+ROquAWFbE6LgRRSHO/Q0DRRc74QJiPuLCCpn7ipT7lEuUDU8haj21t2jgH0KG02B4OrQ8ScRMLvzXtjvm2BTUvffSFL5+HfbzQ1oa94sz1Nmf82Zs5qR1AVvbijNzUrpD798PZoolJdVC3n5nuRQFRJ/0UoShdBwheQqExghfNTFhrfL+fhie8AeLUiMqLBZ55B/aznnMwM8YffCpUbe+oWyohygLpexPMq5BuedGWcLdDEUIvxHG6kQOW2Q224ApRrSVojfl+nDQYM4ZsObQVu31B3P7I6IZEJm2UwTjt/NoA0ILDyhcriudpfjBj2/g7Kn7/WoOj1Ijx7Q4JA2g/aodYF4Ig4+8n7VQh9rVnr3KTPJQ0DFwGZxxXoukfFXn5EtRboRRFzpC+vdBmVoiIamLDWc7iUIgl97OeuIGJ9cvbqZUv9X0IEZ5DKL9QRBgmWt2S0HwsLJiU2uFSvHODQoWKaZvlNlpRKH2h0FY/FIaCfrNvX3s7CfjXdC5pdDZWztRJNtQoAF03fNUMp1XaTPmC/yIlrEXu9THfXqV4OxqFc2cwmTISMZ7s7vu5ZkusEdh1E1mTytHtNSjhKtRcr+CgRvbmZWMt2rjpY9ldKJpDuONwTHJzc=
