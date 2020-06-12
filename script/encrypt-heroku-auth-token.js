@@ -43,7 +43,7 @@ const getRemoteURL = (name, remotes) => {
 const getOutputFromCommand = async (command, args) => {
   const response = await new Promise((resolve, reject) => {
     const process = spawn(command, args)
-
+    //console.log({process});
     const stdout = []
     const stderr = []
 
@@ -123,7 +123,7 @@ const updateTravisYAML = (app, key) => {
 const main = async () => {
   const verbose = process.argv.hasOwnProperty(2)
   const {fullName, appName} = await getNamesFromGit()
-
+  console.log({appName});
   /* Get Heroku authentication token from the Heroku CLI. */
   const herokuTokenOut = await getOutputFromCommand('heroku', ['auth:token'])
   const herokuTokenStr = herokuTokenOut.toString('utf-8')
@@ -133,6 +133,7 @@ const main = async () => {
   /* Download the repo's public key supplied by Travis. */
   const travisURL = `https://api.travis-ci.org/repos/${fullName}/key`
   const travisResponse = await axios.get(travisURL)
+  //console.log(travisResponse);
   const key = travisResponse.data.key
   const keyBuffer = Buffer.from(key, 'utf-8')
   if (verbose) console.log('Received Travis pubkey:\n', keyBuffer.toString())
