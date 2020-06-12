@@ -1,8 +1,8 @@
 language: node_js
 node_js:
-- node
+  - node
 services:
-- postgresql
+  - postgresql
 addons:
   postgresql: '9.6'
 dist: trusty
@@ -12,15 +12,17 @@ notifications:
     on_success: change
     on_failure: always
 install:
-- npm ci
+  - npm ci
 before_script:
-- psql -c 'create database "deployment-exercise-test";' -U postgres
-before_deploy:
-- npm run build-client
-- rm -rf node_modules
-deploy:
+  - psql -c 'create database "deployment-exercise-test";' -U postgres
+before_deploy: # omit node_modules, since we set skip_cleanup below
+  - rm -rf node_modules
+deploy: # see README for details on these keys
+  # prevents travis from deleting the build
   skip_cleanup: true
   provider: heroku
+  # app should be your heroku app name; see README
   app: first-nodejs-95-app
+  # the secure key indicates an encrypted value; see README
   api_key:
-    secure: Ilkv3XRNQlum9u192lFGgTqOQEIx/ZVDkx8BZQmUJRLqvWzkVpY+ROquAWFbE6LgRRSHO/Q0DRRc74QJiPuLCCpn7ipT7lEuUDU8haj21t2jgH0KG02B4OrQ8ScRMLvzXtjvm2BTUvffSFL5+HfbzQ1oa94sz1Nmf82Zs5qR1AVvbijNzUrpD798PZoolJdVC3n5nuRQFRJ/0UoShdBwheQqExghfNTFhrfL+fhie8AeLUiMqLBZ55B/aznnMwM8YffCpUbe+oWyohygLpexPMq5BuedGWcLdDEUIvxHG6kQOW2Q224ApRrSVojfl+nDQYM4ZsObQVu31B3P7I6IZEJm2UwTjt/NoA0ILDyhcriudpfjBj2/g7Kn7/WoOj1Ijx7Q4JA2g/aodYF4Ig4+8n7VQh9rVnr3KTPJQ0DFwGZxxXoukfFXn5EtRboRRFzpC+vdBmVoiIamLDWc7iUIgl97OeuIGJ9cvbqZUv9X0IEZ5DKL9QRBgmWt2S0HwsLJiU2uFSvHODQoWKaZvlNlpRKH2h0FY/FIaCfrNvX3s7CfjXdC5pdDZWztRJNtQoAF03fNUMp1XaTPmC/yIlrEXu9THfXqV4OxqFc2cwmTISMZ7s7vu5ZkusEdh1E1mTytHtNSjhKtRcr+CgRvbmZWMt2rjpY9ldKJpDuONwTHJzc=
+    secure: RfSBjx6Q9QbMVHhgEGZb+8GCBG+FkRTT8bZI1spihHj7bB6tVn55zQxNOEFG54KVW6HL/Y0mWoURU7pOBN6npCAtx4a84W0lbl26H7lQSMDfuAHoyNi5JwtmXAlR+ZuA9RcKEYxRTPSq2yey+rq3vPbRVJ/Z2hTmpzqS7CipyDrwxQ6DiWTRUw5HekEjCPunl9eMyx+COBWkIy7YqNPAW5VOMImGO+cEmYLi5hzlBqbN6qnx0KV2EDqlhHkT7aJo9FeaCKbFVUqeD6L8bPujvtYid+L4eX4d6azTo/Kakzm8rDZxdQmW1kbCoArUrAwT8v8aMNjsyrRezenUjKKOSwx66jHNV6odkOVXlGx5yWKC4lgVOuOJRkoN7UL5pNoFPRtBVIbDtfiZxcQfsHwk5Z9KthEkso5yP6XCtl2NtmmkPRxKxV5rud1Jdunt4qv00mUogtyA3VjOvF+miFmCEQ5YnGNnmDPrhK45CNhRdCDR29AdJs+HxsversYSedhRzHF73Mc5wOAMLHpX0njXQBiUz2Kr80UNPSdru7/gg/N1VfXOUjCuoaqZsRHOSpIdc7FtMwt+xTWnCQ+2IqsEwCGFAJ2tmSqVVf1EesQ0xMgeTg8N2jRmAKjtN3mlrT967F/xn7vl/W/BsgBH8GtS1UMW82sIz3Qjm7IIm6rtrpg=
