@@ -133,7 +133,7 @@ const main = async () => {
   /* Download the repo's public key supplied by Travis. */
   const travisURL = `https://api.travis-ci.org/repos/${fullName}/key`
   const travisResponse = await axios.get(travisURL)
-  console.log(travisResponse);
+  //console.log(travisResponse);
   const key = travisResponse.data.key
   const keyBuffer = Buffer.from(key, 'utf-8')
   if (verbose) console.log('Received Travis pubkey:\n', keyBuffer.toString())
@@ -150,7 +150,7 @@ const main = async () => {
   if (verbose) console.log('Encrypted key base 64 encoded:', keyBase64)
 
   /* Delete temporary files. */
-  //clean()
+  clean()
 
   /* Add the encrypted key to the .travis.yml file. */
   const update = updateTravisYAML(appName, keyBase64)
