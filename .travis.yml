@@ -1,8 +1,8 @@
 language: node_js
 node_js:
-  - node
+- node
 services:
-  - postgresql
+- postgresql
 addons:
   postgresql: '9.6'
 dist: trusty
@@ -12,17 +12,14 @@ notifications:
     on_success: change
     on_failure: always
 install:
-  - npm ci
+- npm ci
 before_script:
-  - psql -c 'create database "deployment-exercise-test";' -U postgres
-before_deploy: # omit node_modules, since we set skip_cleanup below
-  - rm -rf node_modules
-deploy: # see README for details on these keys
-  # prevents travis from deleting the build
+- psql -c 'create database "deployment-exercise-test";' -U postgres
+before_deploy:
+- rm -rf node_modules
+deploy:
   skip_cleanup: true
   provider: heroku
-  # app should be your heroku app name; see README
   app: first-nodejs-95-app
-  # the secure key indicates an encrypted value; see README
   api_key:
-    secure: rGdOHie97chgx23nTSyfxLfr1vN6nYueGB7qlU/txCzD1L4/ti2Zru8yGybkl2zZDILCpC2mBVpgbpZ048YXSQEVv32nu0+8XG8/+gX7TcSVhYhdd8cR2w/NklTB3FTar9CBrEMgVRnUPqpvzko2/NGq8NVrHedbApWJAXCowViaJITGKksLlClWi64vlpZIUZZRszNOUW1Pe4lYK2EkcCKxCNyT1VmW9GZ6C6FjgCXoxLDlUUzU2mhrUqHKZECY0TyRnyOLjjXfIZ5TqGK/GelpRM0ROpP0rIloR3vSZcZeYn5YmuWrRGDxpKEKMLNU/ams4RgCQv4BI/kH6UVAOJInMOMD1S1AUQihEU7d720LCNi1kR6j13EVfEW4HWd9oDFqKSylcw6sIrKlyu88SIMcAaYXHFtYL+9Bz9vwqQoL48cQxqYvyJjHBplxp1LmIYlAQnV34QapOsY6xYOAKK7WnCeQincjj5Bg0M8eLAciMXINxnMT6Jf0sB5WL/Raw5U7O/AM3edqjLqbyYXto8UHJ6t76+BPAZKeUmeIdSHLueMO7RXy4LhCpM++5PqyofpBBkEwewYanZGDhSZ47nQO0zpHyKqXSP2cYW7WU8UjuCIevUbAwF1LHFvSGpqCTwlFHdnafWtHCCMhUlp4JAIcxVoSreoGvnFxqeiz9mU=
+    secure: kSoUsEleW/xTqZt38bw21dkmkZVatwIEWneTCe7dcmzpCPKBWqMjt/xLs+AfN2DsQmHd2VWoAB2I8LmUFAXr2sfeLLy1UGuVG6SJyoWozICGcVa1ATD0y3XJ2kYBwQEFRlPQAX3CiPz7aBoW+EPJy2voQL15MT0J+v/Kxk871LHoj8i8elxWA1AGG2Lzv2igy7R/W3T+Js/fDiHI8dYOOSJfgMX562c2TM5l07ICCznbTscO9qDK8h8MYgHkvquZKmeVtVSGBjQnenjcJS3Ax1XXt1gvSqbmrIh6eZJeYtYOunQTZ+KR2l3WVP0DAgf/GISShAnVtmsRRVpRh1Dsff20LH7U6c7FbzYGe9ftnmiQutQulxkEWBIUQPlr9K2t1gaLcvi6bapk5BGW18oBnDgsxjNEmGR1iafIx+qQmP2cZ6GnZUqoSH9l15isEk6VhVZTqrQIMiX+tPvRo6BhHYnOAt/xIPGNbWi6bFHLPBWcwwbyAza96AJshjCvvaPXajS/rjcwZMDClOqhfTDD8RPmPrjm7EzpNCmVpUq5jsbepxj2w6BhT6ogGbmx9Yfo+j5Hq7ISxF/kXpyjj2DJSrTxxVeBHHBJfrrD1yYQyT+xBW3HTm1HBWB1YDNwGP0iKWzLFcTdLGTqnU7g9E2V53Uo6NnPyaRGJVl80R5E9Xs=
